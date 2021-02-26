@@ -368,3 +368,220 @@ test('returns an array of forecasts and times from the data', () => {
 
   expect(actual).toEqual(expectation);
 });
+
+test('returns and array with name, image url, price, rating, and url for each business in an array of reviews', () => {
+  const rawData = {
+    'businesses': [
+      {
+        'id': '-ADSweGgRsQDYuSLVOUSeg',
+        'alias': 'sanitary-bakery-nanticoke',
+        'name': 'Sanitary Bakery',
+        'image_url': 'https://s3-media4.fl.yelpcdn.com/bphoto/_A64hm5FEdrS4XbhfAtCZg/o.jpg',
+        'is_closed': false,
+        'url': 'https://www.yelp.com/biz/sanitary-bakery-nanticoke?adjust_creative=aEnRA_8Q0mnsH1el4zJ9jw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=aEnRA_8Q0mnsH1el4zJ9jw',
+        'review_count': 23,
+        'categories': [
+          {
+            'alias': 'bakeries',
+            'title': 'Bakeries'
+          }
+        ],
+        'rating': 4.5,
+        'coordinates': {
+          'latitude': 41.19996,
+          'longitude': -75.99978
+        },
+        'transactions': [],
+        'price': '$',
+        'location': {
+          'address1': '126 E Ridge St',
+          'address2': '',
+          'address3': '',
+          'city': 'Nanticoke',
+          'zip_code': '18634',
+          'country': 'US',
+          'state': 'PA',
+          'display_address': [
+            '126 E Ridge St',
+            'Nanticoke, PA 18634'
+          ]
+        },
+        'phone': '+15707356630',
+        'display_phone': '(570) 735-6630',
+        'distance': 739.0852171397313
+      },
+      {
+        'id': 'qAw9qUQFJKcr6Jy3DlGbVg',
+        'alias': 'grateful-roast-cafe-and-coffee-roaster-nanticoke-3',
+        'name': 'Grateful Roast Cafe and Coffee Roaster',
+        'image_url': 'https://s3-media2.fl.yelpcdn.com/bphoto/No_WinzqB70aCny9XLZEng/o.jpg',
+        'is_closed': false,
+        'url': 'https://www.yelp.com/biz/grateful-roast-cafe-and-coffee-roaster-nanticoke-3?adjust_creative=aEnRA_8Q0mnsH1el4zJ9jw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=aEnRA_8Q0mnsH1el4zJ9jw',
+        'review_count': 38,
+        'categories': [
+          {
+            'alias': 'coffeeroasteries',
+            'title': 'Coffee Roasteries'
+          },
+          {
+            'alias': 'coffee',
+            'title': 'Coffee & Tea'
+          },
+          {
+            'alias': 'cafes',
+            'title': 'Cafes'
+          }
+        ],
+        'rating': 4.5,
+        'coordinates': {
+          'latitude': 41.1922305253448,
+          'longitude': -75.9854038436249
+        },
+        'transactions': [
+          'pickup',
+          'delivery'
+        ],
+        'price': '$$',
+        'location': {
+          'address1': '400 Middle Rd',
+          'address2': '',
+          'address3': 'Bdg C',
+          'city': 'Nanticoke',
+          'zip_code': '18634',
+          'country': 'US',
+          'state': 'PA',
+          'display_address': [
+            '400 Middle Rd',
+            'Bdg C',
+            'Nanticoke, PA 18634'
+          ]
+        },
+        'phone': '+15702855282',
+        'display_phone': '(570) 285-5282',
+        'distance': 2184.29603255187
+      },
+      {
+        'id': 'Z25xCND-b2l0mjfNfpbfXQ',
+        'alias': 'nardozzos-pizzeria-nanticoke',
+        'name': 'Nardozzo\'s Pizzeria',
+        'image_url': 'https://s3-media2.fl.yelpcdn.com/bphoto/LXHlLGLSEVPezSYLxF16Gg/o.jpg',
+        'is_closed': false,
+        'url': 'https://www.yelp.com/biz/nardozzos-pizzeria-nanticoke?adjust_creative=aEnRA_8Q0mnsH1el4zJ9jw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=aEnRA_8Q0mnsH1el4zJ9jw',
+        'review_count': 13,
+        'categories': [
+          {
+            'alias': 'pizza',
+            'title': 'Pizza'
+          }
+        ],
+        'rating': 5.0,
+        'coordinates': {
+          'latitude': 41.20542,
+          'longitude': -76.00187
+        },
+        'transactions': [
+          'delivery'
+        ],
+        'price': '$',
+        'location': {
+          'address1': '145 E Main St',
+          'address2': '',
+          'address3': '',
+          'city': 'Nanticoke',
+          'zip_code': '18634',
+          'country': 'US',
+          'state': 'PA',
+          'display_address': [
+            '145 E Main St',
+            'Nanticoke, PA 18634'
+          ]
+        },
+        'phone': '+15707353040',
+        'display_phone': '(570) 735-3040',
+        'distance': 256.295172301661
+      },
+      {
+        'id': 'TCJz6I15mPjwNv3whlvmqw',
+        'alias': 'martys-blue-room-nanticoke',
+        'name': 'Marty\'s Blue Room',
+        'image_url': 'https://s3-media3.fl.yelpcdn.com/bphoto/jIREgUhA8Tl-U7OESyiLow/o.jpg',
+        'is_closed': false,
+        'url': 'https://www.yelp.com/biz/martys-blue-room-nanticoke?adjust_creative=aEnRA_8Q0mnsH1el4zJ9jw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=aEnRA_8Q0mnsH1el4zJ9jw',
+        'review_count': 43,
+        'categories': [
+          {
+            'alias': 'newamerican',
+            'title': 'American (New)'
+          }
+        ],
+        'rating': 4.0,
+        'coordinates': {
+          'latitude': 41.193132,
+          'longitude': -76.015798
+        },
+        'transactions': [
+          'delivery'
+        ],
+        'price': '$$$',
+        'location': {
+          'address1': '100 Old Newport St',
+          'address2': '',
+          'address3': '',
+          'city': 'Nanticoke',
+          'zip_code': '18634',
+          'country': 'US',
+          'state': 'PA',
+          'display_address': [
+            '100 Old Newport St',
+            'Nanticoke, PA 18634'
+          ]
+        },
+        'phone': '+15707357028',
+        'display_phone': '(570) 735-7028',
+        'distance': 1626.7277847305081
+      }
+    ],
+    'total': 4,
+    'region': {
+      'center': {
+        'longitude': -76.0049353,
+        'latitude': 41.2052654
+      }
+    }
+  };
+
+  const expectation = [
+    {
+      'name': 'Sanitary Bakery',
+      'image_url': 'https://s3-media4.fl.yelpcdn.com/bphoto/_A64hm5FEdrS4XbhfAtCZg/o.jpg',
+      'price': '$',
+      'rating': 4.5,
+      'url': 'https://www.yelp.com/biz/sanitary-bakery-nanticoke?adjust_creative=aEnRA_8Q0mnsH1el4zJ9jw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=aEnRA_8Q0mnsH1el4zJ9jw'
+    },
+    {
+      'name': 'Grateful Roast Cafe and Coffee Roaster',
+      'image_url': 'https://s3-media2.fl.yelpcdn.com/bphoto/No_WinzqB70aCny9XLZEng/o.jpg',
+      'price': '$$',
+      'rating': 4.5,
+      'url': 'https://www.yelp.com/biz/grateful-roast-cafe-and-coffee-roaster-nanticoke-3?adjust_creative=aEnRA_8Q0mnsH1el4zJ9jw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=aEnRA_8Q0mnsH1el4zJ9jw'
+    },
+    {
+      'name': 'Nardozzo\'s Pizzeria',
+      'image_url': 'https://s3-media2.fl.yelpcdn.com/bphoto/LXHlLGLSEVPezSYLxF16Gg/o.jpg',
+      'price': '$',
+      'rating': 5.0,
+      'url': 'https://www.yelp.com/biz/nardozzos-pizzeria-nanticoke?adjust_creative=aEnRA_8Q0mnsH1el4zJ9jw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=aEnRA_8Q0mnsH1el4zJ9jw'
+    },
+    {
+      'name': 'Marty\'s Blue Room',
+      'image_url': 'https://s3-media3.fl.yelpcdn.com/bphoto/jIREgUhA8Tl-U7OESyiLow/o.jpg',
+      'price': '$$$',
+      'rating': 4.0,
+      'url': 'https://www.yelp.com/biz/martys-blue-room-nanticoke?adjust_creative=aEnRA_8Q0mnsH1el4zJ9jw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=aEnRA_8Q0mnsH1el4zJ9jw'
+    }
+  ];
+
+  const actual = mungeReviews(rawData);
+
+  expect(actual).toEqual(expectation);
+});
