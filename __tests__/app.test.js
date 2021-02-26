@@ -1,6 +1,6 @@
 const { mungeLocation, mungeWeather, mungeReviews } = require('../lib/munge-utils.js');
 
-test('returns the location name, lat, and lon of the first item in the data', async() => {
+test('returns the location name, lat, and lon of the first item in the data', () => {
   const rawData = [
     {
       'place_id': '235836898',
@@ -201,6 +201,170 @@ test('returns the location name, lat, and lon of the first item in the data', as
   };
 
   const actual = mungeLocation(rawData);
+
+  expect(actual).toEqual(expectation);
+});
+
+test('returns an array of forecasts and times from the data', () => {
+  const rawData = {
+    'data': [
+      {
+        'moonrise_ts': 1614377389,
+        'wind_cdir': 'SE',
+        'rh': 67,
+        'pres': 1001.2,
+        'high_temp': 4.9,
+        'sunset_ts': 1614380001,
+        'ozone': 346.5,
+        'moon_phase': 0.997742,
+        'wind_gust_spd': 13.0938,
+        'snow_depth': 86.4,
+        'clouds': 41,
+        'ts': 1614315660,
+        'sunrise_ts': 1614339721,
+        'app_min_temp': -10.7,
+        'wind_spd': 1.34147,
+        'pop': 0,
+        'wind_cdir_full': 'southeast',
+        'slp': 1029.13,
+        'moon_phase_lunation': 0.51,
+        'valid_date': '2021-02-26',
+        'app_max_temp': 1.2,
+        'vis': 24.096,
+        'dewpt': -5.2,
+        'snow': 0,
+        'uv': 2.58294,
+        'weather': {
+          'icon': 'c03d',
+          'code': 803,
+          'description': 'Broken clouds'
+        },
+        'wind_dir': 135,
+        'max_dhi': null,
+        'clouds_hi': 27,
+        'precip': 0,
+        'low_temp': -3.5,
+        'max_temp': 5,
+        'moonset_ts': 1614341663,
+        'datetime': '2021-02-26',
+        'temp': 0.4,
+        'min_temp': -5.2,
+        'clouds_mid': 26,
+        'clouds_low': 8
+      },
+      {
+        'moonrise_ts': 1614468198,
+        'wind_cdir': 'S',
+        'rh': 90,
+        'pres': 992.417,
+        'high_temp': 7.1,
+        'sunset_ts': 1614466470,
+        'ozone': 298.031,
+        'moon_phase': 0.979141,
+        'wind_gust_spd': 17.1875,
+        'snow_depth': 112.7,
+        'clouds': 81,
+        'ts': 1614402060,
+        'sunrise_ts': 1614426030,
+        'app_min_temp': -5.4,
+        'wind_spd': 2.72622,
+        'pop': 90,
+        'wind_cdir_full': 'south',
+        'slp': 1019.83,
+        'moon_phase_lunation': 0.55,
+        'valid_date': '2021-02-27',
+        'app_max_temp': 3.9,
+        'vis': 17.9803,
+        'dewpt': 2.1,
+        'snow': 26.25,
+        'uv': 2.77264,
+        'weather': {
+          'icon': 's04d',
+          'code': 610,
+          'description': 'Mix snow/rain'
+        },
+        'wind_dir': 178,
+        'max_dhi': null,
+        'clouds_hi': 13,
+        'precip': 3.4375,
+        'low_temp': -2.2,
+        'max_temp': 7.3,
+        'moonset_ts': 1614429831,
+        'datetime': '2021-02-27',
+        'temp': 3.6,
+        'min_temp': -0.5,
+        'clouds_mid': 25,
+        'clouds_low': 80
+      },
+      {
+        'moonrise_ts': 1614554598,
+        'wind_cdir': 'SE',
+        'rh': 94,
+        'pres': 992.3,
+        'high_temp': 3.2,
+        'sunset_ts': 1614552939,
+        'ozone': 291.573,
+        'moon_phase': 0.933277,
+        'wind_gust_spd': 12.5,
+        'snow_depth': 112.7,
+        'clouds': 94,
+        'ts': 1614488460,
+        'sunrise_ts': 1614512339,
+        'app_min_temp': -7.7,
+        'wind_spd': 1.84089,
+        'pop': 75,
+        'wind_cdir_full': 'southeast',
+        'slp': 1020.12,
+        'moon_phase_lunation': 0.58,
+        'valid_date': '2021-02-28',
+        'app_max_temp': -0.9,
+        'vis': 11.4482,
+        'dewpt': -0.3,
+        'snow': 0,
+        'uv': 1.99009,
+        'weather': {
+          'icon': 'r04d',
+          'code': 520,
+          'description': 'Light shower rain'
+        },
+        'wind_dir': 125,
+        'max_dhi': null,
+        'clouds_hi': 79,
+        'precip': 3.3125,
+        'low_temp': -1.8,
+        'max_temp': 3.5,
+        'moonset_ts': 1614517913,
+        'datetime': '2021-02-28',
+        'temp': 0.6,
+        'min_temp': -2.3,
+        'clouds_mid': 74,
+        'clouds_low': 80
+      }
+    ],
+    'city_name': 'Nanticoke',
+    'lon': -76,
+    'timezone': 'America/New_York',
+    'lat': 41.21,
+    'country_code': 'US',
+    'state_code': 'PA'
+  };
+  
+  const expectation = [
+    {
+      'forecast': 'Broken clouds',
+      'time': '2021-02-26'
+    },
+    {
+      'forecast': 'Mix snow/rain',
+      'time': '2021-02-27'
+    },
+    {
+      'forecast': 'Light shower rain',
+      'time': '2021-02-28'
+    }
+  ];
+
+  const actual = mungeWeather(rawData);
 
   expect(actual).toEqual(expectation);
 });
